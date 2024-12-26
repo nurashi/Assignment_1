@@ -31,6 +31,7 @@ public class Main {
             Student student = new Student(name, surname, age, gender);
 
             for (int i = 4; i < parts.length; i++) {
+
                 student.addGrade(Integer.parseInt(parts[i]));
             }
 

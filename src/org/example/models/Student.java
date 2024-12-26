@@ -20,15 +20,23 @@ public class Student extends Person {
 
 
     public double calculateGPA() {
-        int total = 0;
-        for (int grade : grades) {
-            total += grade;
+        double average = grades.stream().mapToInt(Integer::intValue).average().orElse(0.0);
+        // it's just a way of grading
+        if (average > 95) {
+            return 4.0;
+        } else if (average > 89) {
+            return 3.7;
+        } else if (average > 79) {
+            return 3.33;
+        } else if (average > 69) {
+            return 2.9;
+        } else {
+            return 0.0;
         }
-        return grades.isEmpty() ? 0 : (double) total / grades.size();
     }
 
     @Override
     public String toString() {
-        return super.toString() + "I am a student with ID[" + studentID + "]";
+        return super.toString() + "I am a student with ID[" + studentID + "] with grade - " + calculateGPA();
     }
 }
